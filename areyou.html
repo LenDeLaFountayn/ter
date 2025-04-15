@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Are You Gay?</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+      background-color: #f0f8ff;
+    }
+    #main, #question {
+      display: none;
+    }
+    .button {
+      padding: 10px 20px;
+      font-size: 18px;
+      margin: 10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+    }
+    #yesBtn {
+      background-color: #4CAF50;
+      color: white;
+    }
+    #noBtn {
+      background-color: #f44336;
+      color: white;
+      position: absolute;
+    }
+    #result {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div id="nameInput">
+    <h2>Enter your name:</h2>
+    <input type="text" id="name" />
+    <br><br>
+    <button class="button" onclick="startQuiz()">Start</button>
+  </div>
+
+  <div id="question">
+    <h2 id="greeting"></h2>
+    <h3>Are you gay?</h3>
+    <button class="button" id="yesBtn" onclick="submitAnswer('Yes')">Yes</button>
+    <button class="button" id="noBtn">No</button>
+  </div>
+
+  <div id="result"></div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    let name = "";
+    let answers = [];
+
+    function startQuiz() {
+      name = document.getElementById("name").value;
+      if (!name) {
+        alert("Please enter your name.");
+        return;
+      }
+      document.getElementById("nameInput").style.display = "none";
+      document.getElementById("question").style.display = "block";
+      document.getElementById("greeting").innerText = `Hello, ${name}!`;
+    }
+
+    function submitAnswer(answer) {
+      answers.push({ name: name, answer: answer });
+      document.getElementById("question").style.display = "none";
+      document.getElementById("result").innerHTML = `
+        <h2>Thank you, ${name}!</h2>
+        <p>Your answer: <strong>${answer}</strong></p>
+        <h3>All Responses:</h3>
+        <ul>
+          ${answers.map(a => `<li>${a.name}: ${a.answer}</li>`).join('')}
+        </ul>
+      `;
+    }
+
+    function moveButton(e) {
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 100);
+      noBtn.style.left = x + 'px';
+      noBtn.style.top = y + 'px';
+    }
+
+    noBtn.addEventListener('mouseover', moveButton);
+    noBtn.addEventListener('touchstart', moveButton);
+  </script>
+</body>
+</html>
