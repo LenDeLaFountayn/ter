@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Intexity Squad - Mobile Legends</title>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Comic Neue', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: #fff;
+      padding: 2rem;
+      animation: fadeIn 2s ease-in;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Sidebar Styles */
+    .sidebar {
+      height: 100%;
+      width: 220px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #1a1a2e;
+      padding-top: 60px;
+      transition: 0.3s;
+      z-index: 10;
+      box-shadow: 2px 0 12px rgba(0, 0, 0, 0.5);
+    }
+
+    .sidebar a {
+      display: block;
+      color: #ffd700;
+      padding: 12px 24px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+      background-color: #302b63;
+    }
+
+    .sidebar-toggle {
+      position: fixed;
+      top: 20px;
+      left: 10px;
+      z-index: 20;
+      background-color: #ffd700;
+      color: #000;
+      padding: 6px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: left 0.3s;
+    }
+
+    .sidebar.collapsed {
+      width: 0;
+      overflow: hidden;
+    }
+
+    body.collapsed-padding {
+      padding-left: 2rem;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background-image: radial-gradient(circle, rgba(255, 215, 0, 0.1) 1px, transparent 1px);
+      background-size: 60px 60px;
+      animation: rotateBackground 80s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes rotateBackground {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    h1, .description, .squad-container, footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 1rem;
+      font-size: 2.8rem;
+      color: #ffd700;
+      animation: slideDown 1s ease-out;
+      text-shadow: 2px 2px 8px #000;
+    }
+
+    .description {
+      max-width: 800px;
+      margin: 0 auto 2rem auto;
+      text-align: center;
+      font-size: 1.1rem;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1.2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+      animation: popUp 1.5s ease;
+    }
+
+    .description a {
+      color: #00f5d4;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .squad-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 1rem;
+    }
+
+    .member-card {
+      background: #1e1e2f;
+      border-radius: 15px;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(255, 215, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: popUp 1s ease;
+    }
+
+    .member-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 30px rgba(255, 215, 0, 0.6);
+    }
+
+    .member-card img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #ffd700;
+      margin-bottom: 1rem;
+    }
+
+    .member-card h2 {
+      margin-bottom: 0.5rem;
+      color: #ffd700;
+    }
+
+    .member-desc {
+      font-size: 0.95rem;
+      color: #ccc;
+    }
+
+    .leader {
+      border: 2px solid gold;
+      box-shadow: 0 0 20px gold;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes popUp {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body class="collapsed-padding">
+  <div class="sidebar collapsed" id="sidebar">
+    <a href="#">🏠 Home</a>
+    <a href="https://lendelafountayn.github.io/ter/ayie">🛒 Store</a>
+    <a href="https://www.tiktok.com/@fizadh?_t=ZS-8vXkxl8bwvP&_r=1" target="_blank">🎥 TikTok</a>
+    <a href="https://www.wasap.my/601118661916/atminnnn">📞 Contact</a>
+  </div>
+  <div class="sidebar-toggle" onclick="toggleSidebar()">☰ Menu</div>
+
+  <h1>Intexity Squad - Mobile Legends</h1>
+
+  <div class="description">
+    <p>Squad <strong>Intexity</strong> pernah menyertai kejohanan offline peringkat daerah iaitu <strong>Nadi Negeri Sembilan</strong> bersama ahli-ahlinya dari Negeri Sembilan. Dengan pengalaman yang luas dalam bermain Mobile Legends, squad ini sentiasa bersedia untuk mencabar mana-mana pasukan!</p>
+    <p>Jika berminat untuk menyertai squad ini, boleh hubungi admin di TikTok: <a href="https://www.tiktok.com/@fizadh?_t=ZS-8vXkxl8bwvP&_r=1" target="_blank">@fizadh</a></p>
+  </div>
+
+  <div class="squad-container">
+    <div class="member-card leader">
+      <img src="https://oyster.ignimgs.com/mediawiki/apis.ign.com/genshin-impact/c/c9/Genshin-fischl-splash.png?width=1920" alt="adhxiuu">
+      <h2>adhxiuu (Ketua Squad)</h2>
+      <p class="member-desc">Seseorang dengan hero andalan nya iaitu Hero Julian yang dapat membutakan lawan nya dengan memanfaatkan kesalahan kakulasi lawan. Beliau pernah berkata "Aku mauh Furry!!".</p>
+    </div>
+    <div class="member-card">
+      <img src="https://i.pinimg.com/736x/cc/33/cb/cc33cb249e8e58f4a3b5441b47060f74.jpg" alt="D'arbod Celeste">
+      <h2>D'arbod Celeste</h2>
+      <p class="member-desc">Pemain support yang sangat memberi value yang tinggi dalam team dan sentiasa bersedia dengan support andalan nya.</p>
+    </div>
+    <div class="member-card">
+      <img src="https://i.pinimg.com/736x/73/ff/6c/73ff6c64cf815fd5bfc641c06a235cf5.jpg" alt="Kek Batik">
+      <h2>Kek Batik</h2>
+      <p class="member-desc">Tank utama squad yang sentiasa di barisan hadapan menjaga pasukan.</p>
+    </div>
+    <div class="member-card">
+      <img src="https://i.pinimg.com/736x/4c/47/9b/4c479b0e453e344437283fb8edc034d5.jpg" alt="Raja Sigma">
+      <h2>Raja Sigma</h2>
+      <p class="member-desc">Specialist dalam assassin yang licik dan berani melakukan flank berbahaya.</p>
+    </div>
+    <div class="member-card">
+      <img src="https://i.pinimg.com/736x/6b/26/8f/6b268f94e97402081f262d68b7987057.jpg" alt="Crimson.">
+      <h2>Crimson.</h2>
+      <p class="member-desc">Hyper yang kreatif dan pantas bertindak dalam situasi mencemaskan.</p>
+    </div>
+    <div class="member-card">
+      <img src="https://i.pinimg.com/736x/02/1c/ea/021ceaa76f5bae7de455281de6770522.jpg" alt="ainnyeh">
+      <h2>ainnyeh</h2>
+      <p class="member-desc">Midlaner setia yang mahir menggunakan Mid damage dealer dan menjaga positioning.</p>
+    </div>
+    <div class="member-card">
+      <img src="https://i.pinimg.com/736x/bd/23/f8/bd23f89a74d8dbbfd3543874ad21f559.jpg" alt="Grindelwald">
+      <h2>Grindelwald</h2>
+      <p class="member-desc">Offlaner versatile yang mampu sesuaikan diri dengan pelbagai peranan.</p>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Intexity Squad. All rights reserved.</p>
+    <p>Tarikh Kemaskini: 15 April 2025</p>
+  </footer>
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      document.body.classList.toggle('collapsed-padding');
+      sidebar.classList.toggle('collapsed');
+    }
+  </script>
+</body>
+</html>
