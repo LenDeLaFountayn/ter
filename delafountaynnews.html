@@ -15,33 +15,33 @@
     header {
       background-color: #cc0000;
       color: white;
-      padding: 20px;
+      padding: 15px 10px;
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      gap: 15px;
+      gap: 10px;
       border-bottom: 3px solid black;
     }
     header img.logo {
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
       object-fit: contain;
       background: transparent;
     }
     header h1 {
       margin: 0;
-      font-size: 28px;
+      font-size: 20px;
     }
     .container {
       max-width: 1000px;
       margin: auto;
-      padding: 20px;
+      padding: 15px;
     }
     .section-title {
       border-left: 5px solid #cc0000;
       padding-left: 10px;
       margin-bottom: 15px;
-      font-size: 22px;
+      font-size: 20px;
       color: #b30000;
     }
     .card {
@@ -51,7 +51,7 @@
       overflow: hidden;
       margin-bottom: 20px;
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       text-decoration: none;
       color: inherit;
     }
@@ -59,21 +59,22 @@
       background-color: #fff0f0;
     }
     .card img {
-      width: 200px;
-      height: 130px;
+      width: 100%;
+      height: auto;
       object-fit: cover;
     }
     .card-content {
       padding: 15px;
-      flex: 1;
     }
     .card-content h3 {
       margin-top: 0;
       color: #cc0000;
+      font-size: 18px;
     }
     .card-content p {
       margin: 10px 0 0;
       color: #555;
+      font-size: 14px;
     }
     footer {
       text-align: center;
@@ -83,6 +84,23 @@
       padding: 20px;
       background-color: #ffe6e6;
       border-top: 2px solid #cc0000;
+    }
+
+    @media (min-width: 600px) {
+      .card {
+        flex-direction: row;
+      }
+      .card img {
+        width: 200px;
+        height: 130px;
+      }
+      header h1 {
+        font-size: 28px;
+      }
+      header img.logo {
+        width: 50px;
+        height: 50px;
+      }
     }
   </style>
 </head>
@@ -121,7 +139,7 @@
   </div>
 
   <footer>
-    &copy; 2025 Berita DeLaFountayn. Semua hak cipta terpelihara.
+    &copy; 2025 Berita Harian. Semua hak cipta terpelihara.
   </footer>
 </body>
 </html>
