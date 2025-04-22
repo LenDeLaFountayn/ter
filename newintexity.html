@@ -201,8 +201,30 @@
   <video autoplay muted loop style="position:absolute; width:100%; height:100%; object-fit:cover; z-index:-1;">
     <source src="https://cdn.pixabay.com/video/2021/08/10/84574-586228759_large.mp4" type="video/mp4">
   </video>
-  <h2 style="color: #ffd700; font-size: 2.5rem; z-index: 10; animation: glowText 2s infinite alternate; font-family: 'Bebas Neue', sans-serif; letter-spacing: 2px;">Loading Intexity...</h2>
+  <div id="loading-text" style="color: #ffd700; font-size: 2rem; font-family: 'Bebas Neue', sans-serif; animation: flicker 1.2s infinite; z-index: 10;">Loading Intexity...</div>
+  <video autoplay muted loop style="position:absolute; width:100%; height:100%; object-fit:cover; z-index:-1;">
+    <source src="https://cdn.pixabay.com/video/2021/08/10/84574-586228759_large.mp4" type="video/mp4">
+  </video>
+  <h2 id="enter-button" style="color: #ffd700; font-size: 2.5rem; z-index: 10; font-family: 'Bebas Neue', sans-serif; letter-spacing: 2px; display: none; cursor: pointer; padding: 1rem 2rem; background: rgba(0,0,0,0.6); border: 2px solid #ffd700; border-radius: 12px; animation: glowText 2s infinite alternate;">ENTER WEBSITE</h2>
 </div>
+<script>
+  window.addEventListener('load', () => {
+    const enterBtn = document.getElementById('enter-button');
+    setTimeout(() => {
+      document.getElementById('loading-text').style.display = 'none';
+      enterBtn.style.display = 'block';
+    }, 2000);
+
+    enterBtn.addEventListener('click', () => {
+      const preloader = document.getElementById('preloader');
+      preloader.style.opacity = '0';
+      preloader.style.transition = 'opacity 1s ease';
+      setTimeout(() => {
+        preloader.style.display = 'none';
+      }, 1000);
+    });
+  });
+</script>
 <script>
   window.addEventListener('load', () => {
     const preloader = document.getElementById('preloader');
